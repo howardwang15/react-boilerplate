@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
 class Test extends React.Component {
     render() {
@@ -7,8 +9,14 @@ class Test extends React.Component {
             <div className='container'>
                 <button>hello</button>
             </div>
-        )
+        );
     }
 }
 
-ReactDOM.render(<Test />, document.getElementById('root'));
+const root = (
+    <Provider store={createStore()}>
+        <Test />
+    </Provider>
+);
+
+ReactDOM.render(root, document.getElementById('root'));

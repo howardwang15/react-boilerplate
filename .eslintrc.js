@@ -6,7 +6,12 @@ module.exports = {
     },
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "indent": ["error", 4]
+        "react/prefer-stateless-function": [0, { "ignorePureComponents": false}],
+        "react/button-has-type": [0],
+        "indent": ["error", 4],
+        "react/jsx-indent": [1, 4],
+        "jsx-quotes": [1, "prefer-single"],
+        "arrow-body-style": [1, "as-needed"]
     },
     "plugins": [
         "react",

@@ -18,29 +18,29 @@ module.exports = {
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                use: ['style-loader', 'css-loader']
-            }
+                use: ['style-loader', 'css-loader'],
+            },
         ],
     },
-    resolve: {        
+    resolve: {
         modules: [path.resolve(__dirname, 'src'), 'node_modules'],
         extensions: ['.js', '.jsx'],
     },
     plugins: [
         new HtmlWebPackPlugin({
             inject: true,
-            template: './src/static/index.html'
-        })
+            template: './src/static/index.html',
+        }),
     ],
     devtool: 'source-map',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         historyApiFallback: true,
-        port: 8000
-    }
+        port: 8000,
+    },
 };
