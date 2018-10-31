@@ -25,3 +25,10 @@ Change that number to another port
 
 ### Removing .gitkeep files
 Remove the .gitkeep files inside the actions, components, constants, and containers directories. The .gitkeep files were there to allow git to track those folders 
+
+### Generating static files for production
+By default, the boilerplate uses webpack to generate static files
+```
+npm run build
+```
+The static files will be stored in the /dist directory
