@@ -1,30 +1,46 @@
 const path = require('path');
 
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-module.exports = {    
-    context: path.join(__dirname, 'src'),
-    entry: './index.js',
+module.exports = {
+    entry: './src/index.js',
     output: {
-        path: __dirname + '/dist',
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-                loader: "babel-loader"
+        rules: [
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader']
             }
-        }]
+        ],
     },
-    resolve: {
+    resolve: {        
         modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
     },
     plugins: [
         new HtmlWebPackPlugin({
-        template: "./index.html",
-        filename: "index.html"
-    })]
+            inject: true,
+            template: './src/static/index.html'
+        })
+    ],
+    devtool: 'source-map',
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        historyApiFallback: true,
+        port: 8000
+    }
 };
